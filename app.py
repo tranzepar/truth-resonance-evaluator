@@ -1,25 +1,22 @@
+
 import streamlit as st
 from resonance_engine import evaluate_claim
 
 st.set_page_config(page_title="Truth Resonance Evaluator", layout="centered")
-st.title("Truth Resonance Evaluator")
-st.markdown("Evaluate the coherence, scalability, and composite resonance of any idea, quote, or claim.")
+st.title("🧭 Truth Resonance Evaluator")
+st.write("Evaluate the coherence, scalability, and composite resonance of any idea, quote, or claim.")
 
-claim = st.text_area("Enter a claim or quote to evaluate:", height=150)
+user_input = st.text_area("Enter a claim or quote to evaluate:", height=150)
 
-if st.button("Evaluate Truth Resonance"):
-    if claim.strip():
-        with st.spinner("Evaluating..."):
-            result = evaluate_claim(claim)
-
-        st.success("Evaluation Complete")
-
+if st.button("Evaluate"):
+    if user_input.strip():
+        result = evaluate_claim(user_input)
         st.subheader("📊 Truth Resonance Scores")
-        st.markdown(f"**Coherence Score:** {result['coherence_score']:.2f}")
-        st.markdown(f"**Scalability Score:** {result['scalability_score']:.2f}")
-        st.markdown(f"**Composite Truth Score:** {result['composite_score']:.2f}")
+        st.write(f"**Coherence Score:** {result['coherence']:.2f}")
+        st.write(f"**Scalability Score:** {result['scalability']:.2f}")
+        st.write(f"**Composite Truth Score:** {result['composite']:.2f}")
 
         st.subheader("🧠 Explanation")
-        st.markdown(result['explanation'])
+        st.write(result["explanation"])
     else:
-        st.warning("Please enter a quote or statement to evaluate.")
+        st.warning("Please enter a statement to evaluate.")
