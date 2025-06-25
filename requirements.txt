@@ -1,4 +1,8 @@
 streamlit
 pandas
-openai
-numpy
+transformers
+datasets
+peft
+accelerate
+scikit-learn
+huggingface_hub
